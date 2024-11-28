@@ -1,0 +1,53 @@
+
+
+Step -1 : creat two folders - Back end and Front end
+*************************************************
+Step -2 : npm init -y 
+
+The command npm init -y is used to quickly create a package.json file with default values in a 
+Node.js project. Here's what it does:
+
+How It Works
+npm init: This initializes a new Node.js project and walks you through a series of prompts to 
+fill in details about your project (e.g., name, version, description, entry point).
+-y: This flag automatically answers "yes" to all the prompts, using the default values provided by npm.
+
+
+*************************************************
+
+Step -3: install few dependencies and packages
+npm i express cors dotenv mongodb mongoose
+
+Step -4: install typescript 
+npm i ts-node typescript nodemon @types/express @types/cors @types/node --save-dev
+
+
+*************************************************
+Step -5: change settings of package.json
+
+1) "main": "./src/index.ts",
+2) "scripts": { "dev": "nodemon" },...delete test script
+
+*************************************************
+Step -6: tsc confit
+npx tsc --init  -----Create anew tsconfig.json 
+
+*************************************************
+
+Step -7: add folder backend>src>index.ts
+
+*************************************************
+
+Set up Express code:
+
+*************************************************
+
+Step - 8 Creat fornt folder
+
+create vite
+
+npm create vite@latest - follow along the steps
+
+*************************************************
+
+Step - 9 MongoDb
