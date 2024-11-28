@@ -51,3 +51,9 @@ npm create vite@latest - follow along the steps
 *************************************************
 
 Step - 9 MongoDb
+create .env file
+
+*************************************************
+React Router Setup
+
+npm i react-router-dom
