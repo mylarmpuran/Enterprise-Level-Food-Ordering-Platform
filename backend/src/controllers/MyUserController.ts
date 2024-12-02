@@ -1,7 +1,6 @@
-import {Request, Response } from "express";
 import User from "../models/user";
 
-const createCurrentUser = async( req: Request, res: Response) => {
+const createCurrentUser = async( req:any,res:any) => {
     // 1. check if the user exists
     // 2. create the user if it doesnt exitst
     // 3. return the user object to the calling client
@@ -23,4 +22,4 @@ const createCurrentUser = async( req: Request, res: Response) => {
     }
 };
 
-export default {createCurrentUser}
+export default {createCurrentUser};
