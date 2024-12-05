@@ -20,10 +20,10 @@ type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
   onSave: (userProfileData: UserFormData) => void;
-  isLoading: boolean;
+  isPending: boolean;
 }
 
-const UserProfileForm = ({ onSave, isLoading}: Props) => {
+const UserProfileForm = ({ onSave, isPending}: Props) => {
   const form = useForm<UserFormData>({
     resolver: zodResolver(formSchema)
   })
@@ -103,7 +103,7 @@ const UserProfileForm = ({ onSave, isLoading}: Props) => {
           )}
         />
         </div>
-        {isLoading ? <LoadingButton/> : <Button type="submit" className='bg-orange-500'><Submit></Submit></Button>}
+        {isPending ? <LoadingButton/> : <Button type="submit" className='bg-orange-500'>Submit</Button>}
       </form>
     </Form>
   );

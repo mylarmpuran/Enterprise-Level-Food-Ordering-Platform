@@ -5,7 +5,7 @@ import { handleValidationErrors, validateMyUserRequest } from "../middleware/val
 
 const router = express.Router();
 
-router.post("/", MyUserController.createCurrentUser);
-router.put("/",  MyUserController.updateCurrentUser);
+router.post("/", jwtCheck,MyUserController.createCurrentUser);
+router.put("/", jwtCheck,jwtParse,  MyUserController.updateCurrentUser);
 
 export default router;

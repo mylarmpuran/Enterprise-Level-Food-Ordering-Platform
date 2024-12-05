@@ -33,7 +33,7 @@ export const useCreateMyUser = () => {
     isPending,
     isError,
     isSuccess,
-  } = useMutation({mutationFn:createMyUserRequest});
+  } = useMutation(createMyUserRequest);
 
   return{
     createUser,
@@ -73,12 +73,12 @@ export const useUpdateMyUser = async() => {
 
     const {
       mutateAsync: updateUser,
-      isLoading,
+      isPending,
       isSuccess,
       isError,
       error,
       reset,
-    } = useMutation({mutationFn:UpdateMyUserRequest});
+    } = useMutation(UpdateMyUserRequest);
 
-    return { updateUser, isLoading };
+    return { updateUser, isPending, isSuccess,isError,reset,error};
 };
