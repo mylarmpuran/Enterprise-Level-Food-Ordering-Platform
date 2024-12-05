@@ -9,17 +9,14 @@ export const handleValidationErrors = async (
     next: NextFunction,
 ) => {   
 
-    try {
-        const errors = validationResult(req); 
-        if(!errors.isEmpty()){
-            return res.status(400).json({ errors: errors.array()});
-        }
-        res.json({message:"Success"});
-    } catch (error) {
-        next(error);
-    
+    const errors = validationResult(req); 
+    if(!errors.isEmpty()){
+    return res.status(400).json({ errors: errors.array()});
     }
-}
+    next();
+    };
+    
+
 
 export const validateMyUserRequest = [
     body("name").isString().notEmpty().withMessage("Name must be a string"),
@@ -28,4 +25,4 @@ export const validateMyUserRequest = [
     body("country").isString().notEmpty().withMessage("Country must be a string"),
     handleValidationErrors,
     
-]
+];
