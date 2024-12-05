@@ -6,14 +6,11 @@ import { NextFunction, Request, Response, Express, RequestHandler } from "expres
 
 declare global {
   namespace Express {
-    interface Request {
-      
+    interface Request {      
         auth0Id: string;
         userId: string;
-      }
-      
-    }
-    
+      }      
+    }    
   }
 
 
