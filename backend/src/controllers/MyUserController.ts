@@ -5,9 +5,10 @@ const createCurrentUser = async(req:any, res: any) => {
     // 1. check if the user exists
     // 2. create the user if it doesnt exitst
     // 3. return the user object to the calling client
-
+        console.log("I am for createCurrentUser")
     try{
         const { auth0Id } = req.body;
+        console.log(auth0Id)
         const existingUser = await User.findOne({auth0Id});
 
         if(existingUser){
@@ -16,6 +17,7 @@ const createCurrentUser = async(req:any, res: any) => {
         const newUser = new User(req.body);
         await newUser.save();
         res.status(201).json(newUser.toObject());
+        console.log("new user created")
 
     }catch(error){
         console.log(error);

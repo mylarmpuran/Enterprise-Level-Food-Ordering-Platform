@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useMutation } from "@tanstack/react-query";
 
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 type CreateUserRequest = {
@@ -14,6 +15,9 @@ export const useCreateMyUser = () => {
 
   const createMyUserRequest = async(user: CreateUserRequest) => {
     const accessToken = await getAccessTokenSilently();
+
+    console.log(accessToken);
+    
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
       method: "POST",
       headers: {
@@ -21,19 +25,24 @@ export const useCreateMyUser = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(user),
+      
     });
+
+    console.log("i am ok")
+    console.log(response)
 
     if (!response.ok) {
       throw new Error("Failed to create user");
     }
   };
+  console.log("i am 2 ok")
 
   const {
     mutateAsync: createUser,
     isPending,
     isError,
     isSuccess,
-  } = useMutation(createMyUserRequest);
+  } = useMutation({mutationFn:createMyUserRequest});
 
   return{
     createUser,
@@ -50,25 +59,27 @@ type UpdateMyUserRequest = {
   country: string;
 };
 
-export const useUpdateMyUser = async() => {
+export const useUpdateMyUser = () => {
 
-  const { getAccessTokenSilently } = useAuth0();
-
+      const { getAccessTokenSilently } = useAuth0();
       const UpdateMyUserRequest = async(formData: UpdateMyUserRequest) => {
         const accessToken = await getAccessTokenSilently();
+        console.log(accessToken);
+
+        
         const response = await fetch(`${API_BASE_URL}/api/my/user`, {
         method:"PUT",
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "applications/json"
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(formData)
-      });     
-      
-      if(!response.ok){
-        throw new Error("Failed to update user")
-      }
-      return response.json();
+        });     
+        console.log(response);
+        if(!response.ok){
+          throw new Error("Failed to update user")
+        }
+        return response.json();
     };
 
     const {
@@ -78,7 +89,7 @@ export const useUpdateMyUser = async() => {
       isError,
       error,
       reset,
-    } = useMutation(UpdateMyUserRequest);
+    } = useMutation({mutationFn:UpdateMyUserRequest});
 
     return { updateUser, isPending, isSuccess,isError,reset,error};
 };
