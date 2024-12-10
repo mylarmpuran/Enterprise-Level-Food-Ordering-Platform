@@ -20,7 +20,7 @@ declare global {
     tokenSigningAlg: "RS256",
   });
 
-export const jwtParse = async (req:any,res:any,next:NextFunction) => {
+export const jwtParse = async (req:Request,res:Response,next:NextFunction) => {
     const { authorization } = req.headers;
 
     console.log(authorization);

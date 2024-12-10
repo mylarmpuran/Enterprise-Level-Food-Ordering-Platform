@@ -1,4 +1,4 @@
-import { Request, Response} from "express";
+import { Request, RequestHandler, Response} from "express";
 import User from "../models/user";
 
 const getCurrentUser = async (req:any, res: any) => {
@@ -42,7 +42,7 @@ const createCurrentUser = async(req:any, res: any) => {
     }
 };
 
-const updateCurrentUser = async(req:any,res:any) => {
+const updateCurrentUser = async(req:Request,res:Response) => {
     try {
         const { name, addressLine1, country, city } =  req.body;
         const user = await User.findById(req.userId);
