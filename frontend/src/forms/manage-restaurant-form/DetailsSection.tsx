@@ -1,4 +1,4 @@
-import { FormControl, FormDescription, FormField, FormItem, FormLabel } from "@/components/ui/form"
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input";
 import { useFormContext } from "react-hook-form";
 
@@ -12,6 +12,7 @@ const DetailsSection =()=>{
                     Enter the details about your restaurant
                 </FormDescription>
             </div>
+            <div>
             <FormField
                 control={control}
                 name="restaurantName"
@@ -21,9 +22,63 @@ const DetailsSection =()=>{
                         <FormControl>
                             <Input {...field} className="bg-white"/>
                         </FormControl>
+                        <FormMessage/>
                     </FormItem>
                 )}/>
+            <FormField
+                control={control}
+                name="city"
+                render={(field) => (
+                    <FormItem>
+                        <FormLabel>City</FormLabel>
+                        <FormControl>
+                            <Input {...field} className="bg-white"/>
+                        </FormControl>
+                        <FormMessage/>
+                    </FormItem>
+                )}/>
+            <FormField
+                control={control}
+                name="country"
+                render={(field) => (
+                    <FormItem>
+                        <FormLabel>Country</FormLabel>
+                        <FormControl>
+                            <Input {...field} className="bg-white"/>
+                        </FormControl>
+                        <FormMessage/>
+                    </FormItem>
+                )}/>
+            </div>
+
+            <FormField
+                control={control}
+                name="deliveryPrice"
+                render={(field) => (
+                    <FormItem className="max-w-[25%]">
+                        <FormLabel>Delivery price($)</FormLabel>
+                        <FormControl>
+                            <Input {...field} className="bg-white" placeholder="1.40" />
+                        </FormControl>
+                        <FormMessage/>
+                    </FormItem>
+                )}/>
+            <FormField
+            control={control}
+            name="deliveryPrice"
+            render={(field) => (
+                <FormItem className="max-w-[25%]">
+                    <FormLabel>Estimated Delivery Time(minutes)</FormLabel>
+                    <FormControl>
+                        <Input {...field} className="bg-white" placeholder="30" />
+                    </FormControl>
+                    <FormMessage/>
+                </FormItem>
+            )}/>
 
         </div>
     )
-}
+};
+
+
+export default DetailsSection;
