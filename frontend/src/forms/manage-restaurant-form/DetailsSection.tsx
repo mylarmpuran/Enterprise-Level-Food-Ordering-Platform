@@ -16,7 +16,7 @@ const DetailsSection =()=>{
             <FormField
                 control={control}
                 name="restaurantName"
-                render={(field) => (
+                render={({field}) => (
                     <FormItem>
                         <FormLabel>Name</FormLabel>
                         <FormControl>
@@ -28,7 +28,7 @@ const DetailsSection =()=>{
             <FormField
                 control={control}
                 name="city"
-                render={(field) => (
+                render={({field}) => (
                     <FormItem>
                         <FormLabel>City</FormLabel>
                         <FormControl>
@@ -40,7 +40,7 @@ const DetailsSection =()=>{
             <FormField
                 control={control}
                 name="country"
-                render={(field) => (
+                render={({field}) => (
                     <FormItem>
                         <FormLabel>Country</FormLabel>
                         <FormControl>
@@ -54,7 +54,7 @@ const DetailsSection =()=>{
             <FormField
                 control={control}
                 name="deliveryPrice"
-                render={(field) => (
+                render={({field}) => (
                     <FormItem className="max-w-[25%]">
                         <FormLabel>Delivery price($)</FormLabel>
                         <FormControl>
@@ -65,8 +65,8 @@ const DetailsSection =()=>{
                 )}/>
             <FormField
             control={control}
-            name="deliveryPrice"
-            render={(field) => (
+            name="estimatedDeliveryTime"
+            render={({field}) => (
                 <FormItem className="max-w-[25%]">
                     <FormLabel>Estimated Delivery Time(minutes)</FormLabel>
                     <FormControl>
