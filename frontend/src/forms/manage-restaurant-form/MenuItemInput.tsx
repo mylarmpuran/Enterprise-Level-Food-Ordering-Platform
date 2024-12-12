@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { FormField, FormItem,FormLabel,FormControl, FormMessage, Input} from "@/components/ui/form";
+import { FormField, FormItem,FormLabel,FormControl, FormMessage} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { useFormContext } from "react-hook-form";
 
 type Props = {
@@ -22,7 +23,7 @@ const MenuItemInput = ({index,removeMenuItem}: Props) => {
             <FormControl>
               <Input
                 {...field}
-                palceholder="Cheese Pizza"
+                placeholder="Cheese Pizza"
                 className="bg-white"
               />
             </FormControl>
@@ -38,7 +39,7 @@ const MenuItemInput = ({index,removeMenuItem}: Props) => {
               Price ($) <FormMessage />
             </FormLabel>
             <FormControl>
-              <Input {...field} palceholder="8.99" className="bg-white" />
+              <Input {...field} placeholder="8.99" className="bg-white" />
             </FormControl>
           </FormItem>
         )}
@@ -47,7 +48,7 @@ const MenuItemInput = ({index,removeMenuItem}: Props) => {
         type="button"
         onClick={removeMenuItem}
         className="bg=red-500 max-h-fit"
-      >Remov</Button>
+      >Remove</Button>
     </div>
   );
 }
