@@ -110,7 +110,11 @@ const ManageRestaurantForm = (  {onSave, isLoading, restaurant}: Props) => {
       formData.append(`menuItems[${index}][name]`, menuItem.name)
       formData.append(`menuItems[${index}][price]`, (menuItem.price * 100).toString());
     });
-    formData.append(`imageFile`, formDataJson.imageFile);
+
+    if(formDataJson.imageFile){
+      formData.append(`imageFile`, formDataJson.imageFile);
+    }
+    
 
     onSave(formData);
 
