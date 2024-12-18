@@ -1,24 +1,24 @@
 
 import useSearchRestaurants from "@/api/RestaurantApi";
-import SearchBar from "@/components/SearchBar";
+import SearchBar, {SearchForm} from "@/components/SearchBar";
 import SearchResultCard from "@/components/SearchResultCard";
 import SearchResultInfo from "@/components/SearchResultInfo";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 export type SearchState = {
-  searchQuery: String;
-}
+  searchQuery: string;
+  }
 
 const SearchPage = () => {
   const { city } = useParams();
   const [searchState, setSearchState] = useState<SearchState>({
-    searchQuery:" ",
+    searchQuery:"",
   });
-  const { results, isLoading } = useSearchRestaurants(searchState,city);
+  const { results, isLoading } = useSearchRestaurants(searchState, city);
 
-  const setSearchQuery = (searchFormData:SearchForm) => {
-    setSearchQuery((prevState) => ({
+  const setSearchQuery = (searchFormData: SearchForm) => {
+    setSearchState((prevState) => ({
       ...prevState,
       searchQuery: searchFormData.searchQuery,
     }));
@@ -27,7 +27,7 @@ const SearchPage = () => {
   const resetSearch = () => {
     setSearchState((prevState) => ({
       ...prevState,
-      searchQuery: '',
+      searchQuery:"",
     }))
   }
 

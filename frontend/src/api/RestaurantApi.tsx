@@ -2,10 +2,12 @@ import { SearchState } from "@/pages/SearchPage";
 import { RestaurantSearchResponse } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
 
 
 const useSearchRestaurants = (searchState:SearchState, city?: string) => {
+  
   const createSearchRequest = async ():Promise<RestaurantSearchResponse> => {
 
     const params = new URLSearchParams();
@@ -23,7 +25,7 @@ const useSearchRestaurants = (searchState:SearchState, city?: string) => {
     data: results,
     isLoading,
      } = useQuery(
-    {queryKey:['searchRestaurants'],
+    {queryKey:['searchRestaurants', searchState],
       queryFn: createSearchRequest,
       enabled: !!city,
     });
