@@ -15,6 +15,7 @@ export type MenuItem = {
 
 
 export type Restaurant = {
+    restaurantName: ReactNode;
     _id: string;
     user: string;
     restuarantName: string;
