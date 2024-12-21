@@ -2,13 +2,19 @@ import { Request, Response} from "express";
 import Restaurant from "../models/restaurant";
 
 const getRestaurant = async (req: Request, res: Response) => {
+    console.log('hello i am getRestauratn')
     try {
-        const restaurantId = req.params.restuarantId;
+        console.log("hello Iam getRestaurant")
+        const restaurantId = req.params.restaurantId;
+        console.log("hello Iam RestauratnId")
+        console.log(restaurantId)
 
         const restaurant = await Restaurant.findById(restaurantId);
         if(!restaurant){
             return res.status(404).json({ message: "restaurant not found" });
         }
+
+        res.json(restaurant);
 
     } catch (error) {
         console.log(error);

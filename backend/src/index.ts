@@ -4,8 +4,9 @@ import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
 import myUserRoute from "./routes/MyUserRoutes";
+import restaurantroute from "./routes/RestaurantRoute";
 import myRestaurantRoute from './routes/MyRestaurantRoute'
-import restaurantRoute from "./routes/RestauratnRoute"
+
 import { v2 as cloudinary } from 'cloudinary';
 
 mongoose
@@ -19,8 +20,12 @@ mongoose
   })
 
 const app = express();
-app.use(express.json());
+
 app.use(cors());
+
+app.use("/api/order/checkout/webhook", express.raw({type: "*/*"}));
+
+app.use(express.json());
 
 app.get("/health", async (req: Request, res: Response) => {
   res.send({ message: "health OK!" });
@@ -28,7 +33,7 @@ app.get("/health", async (req: Request, res: Response) => {
 
 app.use("/api/my/user", myUserRoute);
 app.use("/api/my/restaurant", myRestaurantRoute);
-app.use("/api/restaurant", restaurantRoute)
+app.use("/api/restaurant",restaurantroute)
 
 app.listen(7000, () => {
   console.log("server started on localhost: 7000");
